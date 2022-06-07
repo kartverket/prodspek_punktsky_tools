@@ -9,13 +9,14 @@ pdal based python tools for interacting with kartverket lidar datasets
                 
 
 Version History:
-V0: 	Working version 
+Current version: https://github.com/kartverket/produktspesifikasjon_punktsky_tools 
 
-Author: christian.malmquist@karverket.no"""
+Author: christian.malmquist@karverket.no
+Maintained by: https://github.com/orgs/kartverket/teams/arbeidsgruppe-punktsky"""
 
 __author__      = "Christian Malmquist"
 __copyright__   = "Norwegian Mapping Authority"
-__version__     = "0.1"
+__version__     = "1"
 __maintainer__  = "Christian Malmquist"
 __email__       = "christian.malmquist@kartverket.com"
 __status__      = "Test"
@@ -52,7 +53,7 @@ def psky_tag14(ifile,ofile,epsg,sensorsys):
     # MERK: pipeline.arrays snubler mot numpy.version.version = 1.20.2 distribuert via OSGeo4W
 
     #metadata = pipeline.metadata
-    # MERK: metadata tryner på særnårske tegn i 1.2
+    # MERK: metadata tryner på særnårske tegn i 1.2 encoded med "las2las.exe  -vertical_nn2000"
     # "PCSCitationGeoKey: UTM sone 33, basert på EUREF89 (ETRS89/UTM)"
     logger = pipeline.log    
 

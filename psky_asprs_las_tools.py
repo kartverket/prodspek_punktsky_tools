@@ -40,6 +40,7 @@ def psky_tag14(ifile,ofile,epsg,sensorsys):
         "forward": "header",
         "system_id": "{sensorsys}",
         "minor_version":4,
+        "dataformat_id":6,
         "compression":"laszip",
         "a_srs":"{epsg}",
         "filename": "{ofile}"
@@ -69,15 +70,32 @@ def psky_12_to_14(ifile,ofile):
     "{ifile}",
     {{
         "type":"filters.assign",
-        "value" : "Classification = 21 WHERE Classification == 24",
-        "value" : "Classification = 40 WHERE Classification == 26",
-        "value" : "Classification = 41 WHERE Classification == 27",
-        "value" : "Classification = 42 WHERE Classification == 28",
-        "value" : "Classification = 43 WHERE Classification == 29",
-        "value" : "Classification = 44 WHERE Classification == 30",
-        "value" : "Classification = 45 WHERE Classification == 31"
-
+        "value" : "Classification = 21 WHERE Classification == 24"
     }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 40 WHERE Classification == 26"
+    }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 41 WHERE Classification == 27"
+    }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 42 WHERE Classification == 28"
+    }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 43 WHERE Classification == 29"
+    }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 44 WHERE Classification == 30"
+    }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 45 WHERE Classification == 31"
+    }},    
     {{
         "type":"writers.las",
         "forward": "header",
@@ -105,15 +123,32 @@ def psky_14_to_12(ifile,ofile):
     "{ifile}",
     {{
         "type":"filters.assign",
-        "value" : "Classification = 24 WHERE Classification == 21",
-        "value" : "Classification = 26 WHERE Classification == 40",
-        "value" : "Classification = 27 WHERE Classification == 41",
-        "value" : "Classification = 28 WHERE Classification == 42",
-        "value" : "Classification = 29 WHERE Classification == 43",
-        "value" : "Classification = 30 WHERE Classification == 44",
-        "value" : "Classification = 31 WHERE Classification == 45"
-
+        "value" : "Classification = 24 WHERE Classification == 21"
     }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 26 WHERE Classification == 40"
+    }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 27 WHERE Classification == 41"
+    }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 28 WHERE Classification == 42"
+    }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 29 WHERE Classification == 43"
+    }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 30 WHERE Classification == 44"
+    }},
+    {{
+        "type":"filters.assign",
+        "value" : "Classification = 31 WHERE Classification == 45"
+    }},    
     {{
         "type":"writers.las",
         "forward": "header",
@@ -132,12 +167,12 @@ def psky_14_to_12(ifile,ofile):
 #USER VARIABLES
 
 #INPUT / OUTPUT
-ifolder = r"C:\_TMP\las12\*.laz"
-ofolder = r"C:\_TMP\las14"
+ifolder = r"C:\projects\LAS12-14_topobaty\las14_header_intact\*.laz" 
+ofolder = r"C:\projects\LAS12-14_topobaty\las14_header_rewrite"
 
 ## "system_id" = sensorsystem    = https://github.com/ASPRSorg/LAS/wiki/Standard-System-Identifiers#system-code-table 
 ## "a_srs"     = koordinatsystem = EPSG:5972 eller EPSG:5973 eller EPSG:5975
-a_srs     = "EPSG:5973"
+a_srs     = "EPSG:5972"
 system_id = "OCZ2"
 
 
@@ -147,7 +182,7 @@ counter = 1
 for lasif in lasifiles:
     print(f"{counter}/{totfiles} ({counter/totfiles*100: >4.1f}%) - {lasif}")
     lasof = ofolder+"\\"+lasif.split("\\")[-1]
-    #psky_tag14(lasif,lasof,a_srs,system_id)
+    psky_tag14(lasif,lasof,a_srs,system_id)
     #psky_14_to_12(lasif,lasof)
-    psky_12_to_14(lasif, lasof)
+    #psky_12_to_14(lasif, lasof)
     counter = counter+1

@@ -37,7 +37,8 @@ def psky_tag14(ifile,ofile,epsg,sensorsys):
     "{ifile}",
     {{
         "type":"writers.las",
-        "forward": "header",
+        "forward": "all",
+        "extra_dims": "all",
         "system_id": "{sensorsys}",
         "minor_version":4,
         "dataformat_id":6,
@@ -98,7 +99,8 @@ def psky_12_to_14(ifile,ofile):
     }},    
     {{
         "type":"writers.las",
-        "forward": "header",
+        "forward": "all",
+        "extra_dims": "all",
         "minor_version":4,
         "dataformat_id":6,
         "compression":"laszip",

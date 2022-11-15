@@ -175,7 +175,7 @@ ofolder = r"C:\projects\LAS12-14_topobaty\las14_header_rewrite"
 ## "system_id" = sensorsystem    = https://github.com/ASPRSorg/LAS/wiki/Standard-System-Identifiers#system-code-table 
 ## "a_srs"     = koordinatsystem = EPSG:5972 eller EPSG:5973 eller EPSG:5975
 a_srs     = "EPSG:5972"
-system_id = "OCZ2"
+system_id = "AOCZ2"
 
 
 lasifiles = glob.glob(ifolder)

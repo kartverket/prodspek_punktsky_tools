@@ -20,7 +20,8 @@ Reference Documents:
     -   https://www.asprs.org/wp-content/uploads/2019/07/LAS_1_4_r15.pdf
     -   https://www.asprs.org/wp-content/uploads/2010/12/LAS_Domain_Profile_Description_Topo-Bathy_Lidar.pdf 
     -   https://sosi.geonorge.no/Produktspesifikasjoner/Punktsky/ 
-    -   https://register.geonorge.no/produktspesifikasjoner/fkb-laser/3.0   
+    -   https://register.geonorge.no/produktspesifikasjoner/fkb-laser/3.0
+    -   https://support.geocue.com/wp-content/uploads/2015/01/CueTip-Working-with-LAS-v1.4-Files-in-GeoCue.pdf    
 
 """
 
@@ -276,7 +277,7 @@ if __name__ == "__main__":
 
     # Konverter LAS 1.4 til LAS 1.2
     ## Filen konverteres ned til 1.2 og klassekoder remappes til FKB-Laser
-    ## Merk: konverteringen er destruktiv
+    ## Merk: konverteringen er destruktiv (scan angle resolution, scanner channel, return numbers, classes over 32, timing)
     if True:
         ifolder = r"C:\projects\pskytools\las14\*.laz" 
         ofolder = r"C:\projects\pskytools\las12_test"

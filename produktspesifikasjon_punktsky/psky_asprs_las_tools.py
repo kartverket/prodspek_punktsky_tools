@@ -2,7 +2,7 @@
 """
 pdal based python tools for manipulating LiDAR datasets managed by Kartverket.
 
- Installation of Python Environment:
+ Installation:
         1) OSGeo  (https://trac.osgeo.org/osgeo4w/)
         2) Docker (https://hub.docker.com/r/cmalmqui/kartverket_punktsky)
         3) Conda  (https://anaconda.org/conda-forge/pdal)
@@ -13,7 +13,7 @@ Version History:
 Current version: https://github.com/kartverket/produktspesifikasjon_punktsky_tools 
 
 Author: christian.malmquist@karverket.no
-Maintained by: https://github.com/orgs/kartverket/teams/arbeidsgruppe-punktsky
+Maintained by: https://github.com/orgs/kartverket/teams/proff
 
 Reference Documents: 
     -   https://www.asprs.org/divisions-committees/lidar-division/laser-las-file-format-exchange-activities
@@ -30,7 +30,7 @@ __copyright__   = "Norwegian Mapping Authority"
 __version__     = "2"
 __maintainer__  = "Christian Malmquist"
 __email__       = "christian.malmquist@kartverket.com"
-__status__      = "Test"
+__status__      = "Working"
 
 # Dependencies
 from concurrent import futures

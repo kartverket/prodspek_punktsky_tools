@@ -268,9 +268,9 @@ if __name__ == "__main__":
     ## Innholdet i filen er uendret, men header tagges med koordinatsystem og sensorsystem som definert i Produktspesifikasjon Punktsky
     ## "system_id" = sensorsystem    = https://github.com/ASPRSorg/LAS/wiki/Standard-System-Identifiers#system-code-table 
     ## "a_srs"     = koordinatsystem = EPSG:5972 eller EPSG:5973 eller EPSG:5975
-    if False:
+    if True:
         a_srs     = "EPSG:5972"
-        system_id = "AOCZ2"
+        system_id = "0000"
         ifolder = r"C:\projects\pskytools\las14\*.laz" 
         ofolder = r"C:\projects\pskytools\las14_tagged"
         worker_tag14()
@@ -278,7 +278,7 @@ if __name__ == "__main__":
     # Konverter LAS 1.4 til LAS 1.2
     ## Filen konverteres ned til 1.2 og klassekoder remappes til FKB-Laser
     ## Merk: konverteringen er destruktiv (scan angle resolution, scanner channel, return numbers, classes over 32, timing)
-    if True:
+    if False:
         ifolder = r"C:\projects\pskytools\las14\*.laz" 
         ofolder = r"C:\projects\pskytools\las12_test"
         worker_14_to_12()

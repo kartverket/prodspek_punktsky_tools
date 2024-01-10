@@ -4,8 +4,7 @@ pdal based python tools for manipulating LiDAR datasets managed by Kartverket.
 
  Installation:
         1) OSGeo  (https://trac.osgeo.org/osgeo4w/)
-        2) Docker (https://hub.docker.com/r/cmalmqui/kartverket_punktsky)
-        3) Conda  (https://anaconda.org/conda-forge/pdal)
+        2) Conda  (https://anaconda.org/conda-forge/pdal)
 
 Version History:
 1. Working version, singlecore

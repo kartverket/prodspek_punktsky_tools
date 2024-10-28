@@ -10,29 +10,3 @@ spec:
   lifecycle: "production"
   owner: "felles_kartdatabase"
   system: "standardisering"
----
-apiVersion: "backstage.io/v1alpha1"
-kind: "Group"
-metadata:
-  name: "security_champion_prodspek_punktsky_tools"
-  title: "Security Champion prodspek_punktsky_tools"
-spec:
-  type: "security_champion"
-  parent: "land_security_champions"
-  members:
-  - "NilsIvarNes"
-  children:
-  - "resource:prodspek_punktsky_tools"
----
-apiVersion: "backstage.io/v1alpha1"
-kind: "Resource"
-metadata:
-  name: "prodspek_punktsky_tools"
-  links:
-  - url: "https://github.com/kartverket/prodspek_punktsky_tools"
-    title: "prodspek_punktsky_tools på GitHub"
-spec:
-  type: "repo"
-  owner: "security_champion_prodspek_punktsky_tools"
-  dependencyOf:
-  - "component:prodspek_punktsky_tools"

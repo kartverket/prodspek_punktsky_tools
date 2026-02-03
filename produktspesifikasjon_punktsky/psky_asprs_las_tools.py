@@ -24,7 +24,7 @@ Reference Documents:
     -   https://support.geocue.com/wp-content/uploads/2015/01/CueTip-Working-with-LAS-v1.4-Files-in-GeoCue.pdf    
 
 HEX layer generation post removal of pdal density in PDAL v2.8 
-C:\_SANDBOX\OM_USV_MBES_2025>python -c "import json; print(json.dumps([r'12\\OM_MBES.laz', {'type':'filters.hexbin','edge_size':10.0,'threshold':1,'density':'hex_10m.geojson'}]))" | pdal pipeline --stdin && ogr2ogr -f GPKG hex_10m.gpkg hex_10m.geojson
+C:\_SANDBOX\OM_USV_MBES_2025>python -c "import json; print(json.dumps([r'12\\OM_MBES.laz', {'type':'filters.hexbin','edge_size':10.0,'threshold':1,'density':'hex_10m.geojson'}]))" | pdal pipeline --stdin && ogr2ogr -f GPKG hex_10m.gpkg hex_10m.geojson -a_srs EPSG:5972
 
 """
 

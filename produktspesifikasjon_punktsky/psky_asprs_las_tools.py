@@ -5,6 +5,7 @@ pdal based python tools for manipulating LiDAR datasets managed by Kartverket.
  Installation:
         1) OSGeo  (https://trac.osgeo.org/osgeo4w/)
         2) Conda  (https://anaconda.org/conda-forge/pdal)
+        3) docker pull cmalmqui/kartverket_punktsky_tools:latest
 
 Version History:
 1. Working version, singlecore
@@ -72,7 +73,7 @@ def psky_tag14(ifile,ofile,epsg,sensorsys):
 
     # Run PDAL Pipeline
     pipeline = pdal.Pipeline(pipeline_json)
-    count = pipeline.execute_streaming()
+    count = run_pipeline(pipeline_json)
     #arrays = pipeline.arrays
     #metadata = pipeline.metadata
     #logger = pipeline.log    
@@ -152,7 +153,7 @@ def psky_12_to_14(ifile,ofile,epsg,sensorsys):
 
     # Run PDAL Pipeline
     pipeline = pdal.Pipeline(pipeline_json)
-    count = pipeline.execute_streaming()
+    count = run_pipeline(pipeline_json)
     #arrays = pipeline.arrays
     #metadata = pipeline.metadata
     #logger = pipeline.log        
@@ -229,7 +230,7 @@ def psky_14_to_12(ifile,ofile):
 
     # Run PDAL Pipeline
     pipeline = pdal.Pipeline(pipeline_json)
-    count = pipeline.execute_streaming()
+    count = run_pipeline(pipeline_json)
     #arrays = pipeline.arrays
     #metadata = pipeline.metadata
     #logger = pipeline.log    
@@ -256,6 +257,17 @@ def worker_14_to_12():
                 f"{to_do[future]!r}"
             )
 
+def run_pipeline(pipeline_json: str) -> int:
+    p = pdal.Pipeline(pipeline_json)
+
+    # Different python-pdal versions expose different method names.
+    if hasattr(p, "execute_streaming"):
+        return p.execute_streaming()      # some builds
+    if hasattr(p, "executeStreaming"):
+        return p.executeStreaming()       # some builds (camelCase)
+    return p.execute()                    # always available
+
+
 if __name__ == "__main__":
     #MACHINE VARIABLES
     num_workers = 8 # Have fun, as many workers as the number of cores you have available :)
@@ -267,7 +279,7 @@ if __name__ == "__main__":
     ## Innholdet i filen er uendret, men header tagges med koordinatsystem og sensorsystem som definert i Produktspesifikasjon Punktsky
     ## "system_id" = sensorsystem    = https://github.com/ASPRSorg/LAS/wiki/Standard-System-Identifiers#system-code-table 
     ## "a_srs"     = koordinatsystem = EPSG:5972 eller EPSG:5973 eller EPSG:5975
-    if True:
+    if False:
         a_srs     = "EPSG:5972"
         system_id = "0000"
         ifolder = r"C:\projects\pskytools\las14\*.laz" 
@@ -284,9 +296,9 @@ if __name__ == "__main__":
     
     # Konverter LAS 1.2 til LAS 1.4
     ## Filen konverteres opp til 1.4 og klassekoder remappes til Produktspesifikasjon Punktsky
-    if False:
+    if True:
         a_srs     = "EPSG:5972"
-        system_id = "AOCZ2"        
-        ifolder = r"C:\projects\pskytools\las12_test\*.laz" 
-        ofolder = r"C:\projects\pskytools\las14_test"
+        system_id = "BMB00"        
+        ifolder = r"12/*.laz" 
+        ofolder = r"14"
         worker_12_to_14()                         
